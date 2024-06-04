@@ -1,0 +1,47 @@
+@font-face {
+  font-family: 'DIN';
+  src: url(./DINMittelschriftStd.otf);
+}
+
+$primary: rgb(255, 0, 0);
+$secondary: rgb(227, 215, 219);
+
+
+body{
+  /* background-color: rgb(50,50,0); */
+  width: 200vw;
+  height: 200vh;
+  --dot-size: 1px;
+  --dot-space: 22px;
+	background:
+		linear-gradient(90deg, $secondary calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		linear-gradient($secondary calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		$primary;
+    display: flex;
+    flex-wrap: wrap;
+    font-family: 'DIN';
+}
+
+
+h2{
+  margin: 5px 0;
+  font-size: 75px;
+}
+
+.wrapper{
+  border: 1px solid $primary;
+  color: $primary;
+  background-color: $secondary;
+  height: fit-content;
+  position: relative;
+  padding: 14px 24px;
+  margin: 10px;
+  box-shadow: 8px 8px 2px -5px $primary;
+  cursor: move;
+  position: absolute;
+  img{
+    width: 100%;
+    height: auto;
+    z-index: 9999;
+  }
+}
