@@ -7,9 +7,11 @@ import Image from "../components/image"
 
 const Home = ({ homepage, items }) => {
 
+  let counter = 1;
+
 
   useEffect(() => {
- 
+
       $( function() {
         for (let i = 0; i < document.getElementsByClassName('wrapper').length; i++) {
           let randomX =  Math.floor(Math.random() * 100) + 'vw';
@@ -20,25 +22,37 @@ const Home = ({ homepage, items }) => {
           document.getElementsByClassName('wrapper')[i].style.marginTop = randomY
         }
       } );
+      
   }, [])
+
+  function placeAbove(event){
+    if (event.target.parentElement.id){
+      counter++
+      document.getElementById(event.target.parentElement.id).style.zIndex = counter;
+    }
+  }
 
 
   return (
     <Layout>
-      {items.map((item, i) => {
-        return(
-          <div className="wrapper" id={`wrapper${i}`} key={`wrapper${i}`}>
-            <p>{item.attributes.Prompt}</p>
-            <h2>{item.attributes.Answer_Text}</h2>
-            {item.attributes.Answer_Image.data && 
-              <div class="halftone">
-                <Image image={item.attributes.Answer_Image.data}/>
+      <div className="viewport">
+        <div className="content">
+          {items.map((item, i) => {
+            return(
+              <div className="wrapper" id={`wrapper${i}`} key={`wrapper${i}`} onMouseDown={placeAbove}>
+                <p>{item.attributes.Prompt}</p>
+                <h2>{item.attributes.Answer_Text}</h2>
+                {item.attributes.Answer_Image.data && 
+                  <div className="halftone">
+                    <Image image={item.attributes.Answer_Image.data}/>
+                  </div>
+                }
               </div>
-            }
-          </div>
-        )
-      })}
-      <h1>Product Design <br/> 50 jaar</h1>
+            )
+          })}
+        </div>
+        <h1>Product Design <br/> 50 jaar</h1>
+      </div>
     </Layout>
   )
 }

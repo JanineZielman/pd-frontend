@@ -9,8 +9,6 @@ $secondary: rgb(18,18,18);
 
 body{
   /* background-color: rgb(50,50,0); */
-  width: 200vw;
-  height: 200vh;
   --dot-size: 1px;
   --dot-space: 22px;
 	background:
@@ -21,6 +19,21 @@ body{
     flex-wrap: wrap;
     font-family: 'DIN';
     color: $primary;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.viewport{
+  width: 100vw;
+  height: 100vh;
+  overflow: scroll;
+  position: relative;
+}
+
+.content{
+  width: 200vw;
+  height: 200vw;
 }
 
 h1{
@@ -38,19 +51,22 @@ h1{
 h2{
   margin: 5px 0;
   font-size: 75px;
+  line-height: 1;
 }
 
 .wrapper{
   border: 1px solid $primary;
   color: $primary;
   background-color: $secondary;
+  width: 500px;
+  max-width: 100%;
   height: fit-content;
-  position: relative;
+  position: absolute;
   padding: 14px 24px;
   margin: 10px;
   box-shadow: 8px 8px 2px -5px $primary;
   cursor: move;
-  position: absolute;
+  z-index: 999;
   img{
     width: 100%;
     height: auto;
