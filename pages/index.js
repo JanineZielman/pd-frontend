@@ -6,7 +6,8 @@ import { BlocksRenderer } from "@strapi/blocks-react-renderer"
 import Image from "../components/image"
 
 const Home = ({ homepage, items }) => {
-  console.log(items)
+
+
   useEffect(() => {
  
       $( function() {
@@ -19,19 +20,21 @@ const Home = ({ homepage, items }) => {
           document.getElementsByClassName('wrapper')[i].style.marginTop = randomY
         }
       } );
-
   }, [])
+
+
   return (
     <Layout>
       {items.map((item, i) => {
         return(
-          <div className="wrapper" id={`wrapper${i}`}>
+          <div className="wrapper" id={`wrapper${i}`} key={`wrapper${i}`}>
             <p>{item.attributes.Prompt}</p>
             <h2>{item.attributes.Answer_Text}</h2>
             {item.attributes.Answer_Image.data && <Image image={item.attributes.Answer_Image.data}/>}
           </div>
         )
       })}
+      <h1>Product Design <br/> 50 jaar</h1>
     </Layout>
   )
 }
