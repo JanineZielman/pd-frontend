@@ -7,6 +7,8 @@ import Image from "../components/image"
 
 const Home = ({ homepage, items }) => {
 
+  console.log(items)
+
   let counter = 1;
 
 
@@ -30,29 +32,40 @@ const Home = ({ homepage, items }) => {
       counter++
       document.getElementById(event.target.parentElement.id).style.zIndex = counter;
     }
+    if (event.target.id){
+      counter++
+      document.getElementById(event.target.id).style.zIndex = counter;
+    }
   }
 
 
   return (
     <Layout>
-      <div className="viewport">
+
         <div className="content">
           {items.map((item, i) => {
             return(
-              <div className="wrapper" id={`wrapper${i}`} key={`wrapper${i}`} onMouseDown={placeAbove}>
-                <p>{item.attributes.Prompt}</p>
-                <h2>{item.attributes.Answer_Text}</h2>
-                {item.attributes.Answer_Image.data && 
-                  <div className="halftone">
-                    <Image image={item.attributes.Answer_Image.data}/>
+              <>
+              {item.attributes.Answer.map((answer,j) => {
+                return(
+                  <div className="wrapper" id={`wrapper${i}-${j}`} key={`wrapper${i}`} onMouseDown={placeAbove}>
+                    {/* <p>{answer.prompt.data.attributes.prompt}</p> */}
+                    <h2>{answer.Answer_Text}</h2>
+                    {answer.Answer_Image.data && 
+                      <div className="halftone">
+                        <Image image={answer.Answer_Image.data}/>
+                      </div>
+                    }
                   </div>
-                }
-              </div>
+                )
+              })}
+              
+              </>
             )
           })}
         </div>
         <h1>Product Design <br/> 50 jaar</h1>
-      </div>
+
     </Layout>
   )
 }
@@ -60,7 +73,7 @@ const Home = ({ homepage, items }) => {
 export async function getServerSideProps(ctx) {
   const [homepageRes, itemsRes] = await Promise.all([
     fetchAPI("/homepage?populate=*"),
-    fetchAPI("/items?populate=*"),
+    fetchAPI("/items?populate[Answer][populate]=*&populate=*"),
   ])
 
   return {

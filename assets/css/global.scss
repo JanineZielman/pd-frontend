@@ -11,29 +11,28 @@ body{
   /* background-color: rgb(50,50,0); */
   --dot-size: 1px;
   --dot-space: 22px;
+  display: flex;
+  flex-wrap: wrap;
+  font-family: 'DIN';
+  color: $primary;
+  width: auto;
+  height: auto;
+  overflow: auto;
 	background:
 		linear-gradient(90deg, $secondary calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
 		linear-gradient($secondary calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
 		$primary;
-    display: flex;
-    flex-wrap: wrap;
-    font-family: 'DIN';
-    color: $primary;
-    width: 100vw;
-    height: 100vh;
-    overflow: hidden;
-}
-
-.viewport{
-  width: 100vw;
-  height: 100vh;
-  overflow: scroll;
-  position: relative;
+  margin: 0;
 }
 
 .content{
   width: 200vw;
   height: 200vw;
+}
+
+.content2{
+  width: 100vw;
+  height: 100vh;
 }
 
 h1{
@@ -102,4 +101,104 @@ h2{
   pointer-events: none;
   transform: rotate(11.25deg);
   z-index: 1;
+}
+
+*:focus {
+  outline: none;
+}
+
+.submit-page {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  form{
+    width: 600px;
+    max-width: 90vw;
+    margin-top: 48px;
+    padding-bottom: 100px;
+  }
+  h2{
+    margin-top: 48px;
+    padding-bottom: 14px;
+  }
+  input {
+    border: none;
+    border-bottom: 2px solid $primary;
+    background-color: transparent;
+    display: block;
+    width: 98%;
+    font-size: 30px;
+    color: $primary;
+  }
+  textarea {
+    width: 98%;
+    display: block;
+    border: 2px solid $primary;
+    height: 250px;
+    background-color: transparent;
+    font-size: 30px;
+    color: $primary;
+    margin-top: 10px;
+  }
+  button {
+    color: $primary;
+    &:before {
+      content: "➝";
+      margin-right: 10px;
+    }
+  }
+}
+
+input[type="file"]{
+  font-size: 16px;
+  margin-top: 10px;
+}
+
+.confirmation-page{
+  display: none;
+}
+
+.confirmation{
+  form, p{
+    display: none;
+  }
+  .confirmation-page {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    background-color: #D5D5D5;
+    width: 100vw;
+    height: 90vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+  }
+}
+
+.flex{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button{
+  background-color: transparent;
+  border: 1px solid $primary;
+  padding: 5px 20px;
+  font-size: 24px;
+  width: fit-content;
+  margin: auto;
+  cursor: pointer;
+  &:nth-child(2){
+    background-color: $primary;
+    color: $secondary;
+    border-color: $secondary;
+    padding-bottom: 0px;
+    padding-top: 6px;
+  }
+}
+
+#hidden{
+  height: 0;
+  opacity: 0;
 }
