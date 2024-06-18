@@ -8,7 +8,6 @@ import axios from "axios";
 
 const Page = ({ homepage, items }) => {
   const router = useRouter();
-  console.log(items)
 
   const [error, setError] = useState()
   const [randomNumber, setRandomNumber] = useState(getRandomInt(items.length))
@@ -79,7 +78,7 @@ const Page = ({ homepage, items }) => {
 
   return (
 
-      <div className="submit-page" ref={submitPage}>
+    <div className="submit-page" ref={submitPage}>
       <form onSubmit={handleSubmit}>
         <label>
           *Who are you?
@@ -121,9 +120,6 @@ const Page = ({ homepage, items }) => {
         </div>
       </form>
       {loading && "Loading..."}
-      <div className='confirmation-page'>
-        yay
-      </div>
     </div>
 
   )

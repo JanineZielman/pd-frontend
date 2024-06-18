@@ -202,3 +202,53 @@ input[type="file"]{
   height: 0;
   opacity: 0;
 }
+
+.popup{
+  display: none;
+  position: fixed;
+  z-index: 999;
+  width: 600px;
+  max-width: 90vw;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: $secondary;
+  padding: 14px 24px;
+  box-shadow: 8px 8px 2px -5px $primary;
+  max-height: 90vh;
+  overflow-y: scroll;
+  form{
+    padding-bottom: 0;
+    margin-top: 0;
+  }
+  h2{
+    margin-top: 14px;
+  }
+  .button{
+    transition: all 0.4s ease;
+    &:hover{
+      background-color: $primary;
+      color: $secondary;
+    }
+  }
+}
+
+.close{
+  right: 14px;
+  top: 14px;
+  position: fixed;
+  font-size: 36px;
+  cursor: pointer;
+}
+
+.space{
+  height: 100px;
+}
+
+.open-popup{
+  position: fixed;
+  top: calc(50% - 50px);
+  left: 50%;
+  z-index: 2;
+  transform: translate(-50%,-50%);
+}
