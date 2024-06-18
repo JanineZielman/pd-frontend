@@ -60,9 +60,8 @@ h2{
 }
 
 .halftone {
-  // background: $secondary;
   position: relative;
-  filter: contrast(200%);
+  filter: contrast(175%);
   overflow: hidden;
   transform: translateZ(0); /* force a HW accelerated layer */
 }
