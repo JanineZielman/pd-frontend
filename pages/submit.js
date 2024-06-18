@@ -4,7 +4,6 @@ import { fetchAPI } from "../lib/api"
 import { useRouter } from "next/router"
 import { BlocksRenderer } from "@strapi/blocks-react-renderer"
 import Image from "../components/image"
-import axios from "axios";
 
 const Page = ({ homepage, items }) => {
   const router = useRouter();
@@ -78,7 +77,7 @@ const Page = ({ homepage, items }) => {
 
   return (
 
-    <div className="submit-page" ref={submitPage}>
+    <div className="submit-page center-page" ref={submitPage}>
       <form onSubmit={handleSubmit}>
         <label>
           *Who are you?
@@ -100,7 +99,7 @@ const Page = ({ homepage, items }) => {
           <input type="text" name="Email" onChange={e => handleChange(e)} />
         </label>
          <br />
-        <label>
+        {/* <label>
           <input id="hidden" type="number" value={items[randomNumber].id}/>
           <h2 id={items[randomNumber].id}>{items[randomNumber].attributes.prompt}</h2>
           Answer:
@@ -111,11 +110,11 @@ const Page = ({ homepage, items }) => {
           <br/>
           Image:
           <input type="file" accept="image/*"/>
-        </label>
+        </label> */}
         <br /><br />
         <div className="error">{error}</div>
         <div className="flex">
-          <button className="button">Submit</button>
+          <button className="button">Start</button>
           {/* <div className="button">Another prompt</div> */}
         </div>
       </form>

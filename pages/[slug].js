@@ -1,6 +1,7 @@
 import { fetchAPI } from "../lib/api"
 import Layout from "../components/layout/layout"
 import React, { useEffect, useState, useRef } from "react"
+import Image from "../components/image"
 
 const Page = ({ page, items}) => {
   console.log(page.attributes.Answer)
@@ -69,21 +70,12 @@ const Page = ({ page, items}) => {
     } 
   }
 
-
-  // const handleAnswer = (e) => {
-  //   let text = document.getElementById('text').value
-  //   let link = document.getElementById('link').value
-  //   let prompt_id = document.getElementById('hidden').value
-  //   userData.Answer.push({Answer_Text: text,  Answer_Link: link, prompt: prompt_id })
-  //   // setUserData({...userData, Answer: [{Answer_Text: text,  Answer_Link: link, prompt: prompt_id }]});
-  // }
-
   function getRandomInt(max) {
     return Math.floor(Math.random() * max);
   }
 
   function openPopup(){
-    document.getElementById('popup').style.display = 'block';
+    document.getElementById('popup').style.display = 'flex';
   }
 
   function closePopup(){
@@ -100,7 +92,7 @@ const Page = ({ page, items}) => {
                 <h2>{item.Answer_Text}</h2>
                 {item.Answer_Image?.data && 
                   <div className="halftone">
-                    <Image image={answer.Answer_Image.data}/>
+                    <Image image={item.Answer_Image.data}/>
                   </div>
                 }
               </div>
