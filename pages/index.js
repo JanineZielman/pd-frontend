@@ -30,7 +30,11 @@ const Home = ({ homepage, items }) => {
           <div className="wrapper" id={`wrapper${i}`} key={`wrapper${i}`}>
             <p>{item.attributes.Prompt}</p>
             <h2>{item.attributes.Answer_Text}</h2>
-            {item.attributes.Answer_Image.data && <Image image={item.attributes.Answer_Image.data}/>}
+            {item.attributes.Answer_Image.data && 
+              <div class="halftone">
+                <Image image={item.attributes.Answer_Image.data}/>
+              </div>
+            }
           </div>
         )
       })}
