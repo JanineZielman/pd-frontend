@@ -2,8 +2,6 @@ import React, { useEffect, useState, useRef } from "react"
 import Layout from "../components/layout/layout"
 import { fetchAPI } from "../lib/api"
 import { useRouter } from "next/router"
-import { BlocksRenderer } from "@strapi/blocks-react-renderer"
-import Image from "../components/image"
 
 const Page = ({ homepage, items }) => {
   const router = useRouter();

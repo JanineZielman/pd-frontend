@@ -28,7 +28,6 @@ body{
 #content{
   width: 200vw;
   height: 200vw;
-  zoom: 100%;
   transition: all 0.4s ease;
 }
 
@@ -287,7 +286,6 @@ input[type="file"]{
   font-size: 40px;
   background-color: $secondary;
   padding: 8px;
-  // border: 1px solid red;
   box-shadow: 8px 8px 2px -5px $primary;
   div{
     cursor: pointer;

@@ -16,7 +16,9 @@ const Home = ({ homepage, items }) => {
           document.getElementsByClassName('wrapper')[i].style.marginLeft = randomX
           document.getElementsByClassName('wrapper')[i].style.marginTop = randomY
         }
+        
       } );
+      
   }, [])
 
   function placeAbove(event){
