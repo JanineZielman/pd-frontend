@@ -14,10 +14,12 @@ const Page = ({ page, items}) => {
         for (let i = 0; i < document.getElementsByClassName('wrapper').length; i++) {
           let randomX =  Math.floor(Math.random() * 85) + 'vw';
           let randomY =  Math.floor(Math.random() * 85) + 'vh';
+          let randomW =  Math.floor(Math.random() * 50 + 50  ) + '%';
           let id = '#' + document.getElementsByClassName('wrapper')[i].id
           $(id).draggable();
           document.getElementsByClassName('wrapper')[i].style.marginLeft = randomX
           document.getElementsByClassName('wrapper')[i].style.marginTop = randomY
+          document.getElementsByClassName('wrapper')[i].style.transform = 'scale(' + randomW + ')';
         }
       } );   
   }, [])

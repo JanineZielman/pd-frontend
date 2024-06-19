@@ -11,10 +11,12 @@ const Home = ({ homepage, items }) => {
         for (let i = 0; i < document.getElementsByClassName('wrapper').length; i++) {
           let randomX =  Math.floor(Math.random() * 150) + 'vw';
           let randomY =  Math.floor(Math.random() * 150) + 'vh';
+          let randomW =  Math.floor(Math.random() * 50 + 50  ) + '%';
           let id = '#' + document.getElementsByClassName('wrapper')[i].id
           $(id).draggable();
           document.getElementsByClassName('wrapper')[i].style.marginLeft = randomX
           document.getElementsByClassName('wrapper')[i].style.marginTop = randomY
+          document.getElementsByClassName('wrapper')[i].style.transform = 'scale(' + randomW + ')';
         }
         
       } );
@@ -66,6 +68,9 @@ const Home = ({ homepage, items }) => {
                       <div className="halftone">
                         <Image image={answer.Answer_Image.data}/>
                       </div>
+                    }
+                    {answer.Answer_Link && 
+                      <a className="answer-link" href={answer.Answer_Link}>➝ {answer.Answer_Link}</a>
                     }
                   </div>
                 )

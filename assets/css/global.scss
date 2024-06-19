@@ -294,3 +294,12 @@ input[type="file"]{
   }
   
 }
+
+.answer-link{
+  text-decoration: none;
+  color: $primary;
+  font-size: 36px;
+  &:hover{
+    opacity: 0.8;
+  }
+}
