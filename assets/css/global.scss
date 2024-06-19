@@ -123,6 +123,9 @@ h2{
     max-width: 90vw;
     margin-top: 48px;
     padding-bottom: 100px;
+    background-color: $secondary;
+    box-shadow: 8px 8px 2px -5px $primary;
+    padding: 14px 24px;
   }
   h2{
     margin-top: 48px;
@@ -130,7 +133,7 @@ h2{
   }
   input {
     border: none;
-    border-bottom: 2px solid $primary;
+    border-bottom: 1px solid $primary;
     background-color: transparent;
     display: block;
     width: 98%;
@@ -149,6 +152,7 @@ h2{
   }
   button {
     color: $primary;
+    margin-bottom: 14px;
     &:before {
       content: "➝";
       margin-right: 10px;
