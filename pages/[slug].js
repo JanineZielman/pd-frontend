@@ -7,6 +7,7 @@ const Page = ({ page, items}) => {
   console.log(page.attributes.Answer)
 
   let counter = 1;
+  let imageId;
 
   useEffect(() => {
       $( function() {
@@ -48,26 +49,52 @@ const Page = ({ page, items}) => {
     let text = document.getElementById('text').value
     let link = document.getElementById('link').value
     let prompt_id = document.getElementById('hidden').value
-    userData.Answer.push({Answer_Text: text,  Answer_Link: link, prompt: prompt_id })
-    console.log(userData)
-    try {
-      fetch(`https://cms.pdapedia.nl/api/items/${page.id}?populate=*`, {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          data: userData,
-        }),
-      })
-      .then(response => response.json())
-      .then(setLoading(false))
-      .then(location.reload());
-    } catch (err) {
-      console.log('err', err);
-      setError(err.response.data.message);
-      setLoading(false);
-    } 
+
+    if (document.getElementById('answer_image').files[0]){
+      handleUpload();
+    }
+   
+    setTimeout(() => {
+      if (document.getElementById('answer_image').files[0]){
+        userData.Answer.push({Answer_Text: text,  Answer_Link: link, prompt: prompt_id, Answer_Image: [imageId] })
+      } else {
+        userData.Answer.push({Answer_Text: text,  Answer_Link: link, prompt: prompt_id })
+      }
+      try {
+        fetch(`https://cms.pdapedia.nl/api/items/${page.id}?populate=*`, {
+          method: 'PUT',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({
+            data: userData,
+          }),
+        })
+        .then(response => response.json())
+        .then(setLoading(false))
+        .then(imageId=null)
+        .then(location.reload());
+      } catch (err) {
+        console.log('err', err);
+        setError(err.response.data.message);
+        setLoading(false);
+      } 
+    }, 1000);
+
+
+  }
+
+  const handleUpload = async (e) => {
+    let image = document.getElementById('answer_image').files[0]
+    const formData = new FormData();
+    formData.append('files', image);
+    fetch(`https://cms.pdapedia.nl/api/upload`, {
+      method: 'POST',
+      body: formData
+    })
+    .then(response => response.json())
+    .then(data => imageId = data?.[0]?.id)
+    .catch(error => console.error('Error:', error));
   }
 
   function getRandomInt(max) {
@@ -84,11 +111,12 @@ const Page = ({ page, items}) => {
 
   return (
     <Layout>
+      <a className="back" href="/">Back to home</a>
       <div className="content2">
           {page.attributes.Answer?.map((item, i) => {
             return(
               <div className="wrapper" id={`wrapper${i}`} key={`wrapper${i}`} onMouseDown={placeAbove}>
-                {/* <p>{answer.prompt.data.attributes.prompt}</p> */}
+                <p>{item.prompt.data.attributes.prompt}</p>
                 <h2>{item.Answer_Text}</h2>
                 {item.Answer_Image?.data && 
                   <div className="halftone">
@@ -115,7 +143,7 @@ const Page = ({ page, items}) => {
             <input id="link" type="url" name="Answer_Link" />
             <br/>
             Image:
-            <input type="file" accept="image/*"/>
+            <input id="answer_image" type="file" accept="image/*"/>
           </label>
           <br /><br />
           <div className="error">{error}</div>

@@ -25,9 +25,11 @@ body{
   margin: 0;
 }
 
-.content{
+#content{
   width: 200vw;
   height: 200vw;
+  zoom: 100%;
+  transition: all 0.4s ease;
 }
 
 .content2{
@@ -266,4 +268,31 @@ input[type="file"]{
   left: 50%;
   z-index: 2;
   transform: translate(-50%,-50%);
+}
+
+.back{
+  position: fixed;
+  top: 14px;
+  left: 14px;
+  z-index: 999;
+  text-decoration: none;
+  color: $primary;
+}
+
+.zoom-in-out{
+  position: fixed;
+  z-index: 9999;
+  top: 14px;
+  right: 14px;
+  font-size: 40px;
+  background-color: $secondary;
+  padding: 8px;
+  // border: 1px solid red;
+  box-shadow: 8px 8px 2px -5px $primary;
+  div{
+    cursor: pointer;
+    line-height: 1;
+    text-align: center;
+  }
+  
 }
