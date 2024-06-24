@@ -5,6 +5,7 @@ const Item = ({ answer, i, j}) => {
   let counter = 2;
   
   function placeAbove(event){
+    
     if (event.target.parentElement.id){
       counter++
       document.getElementById(event.target.parentElement.id).style.zIndex = counter;
@@ -17,10 +18,20 @@ const Item = ({ answer, i, j}) => {
       counter++
       document.getElementById(event.target.parentElement.parentElement.parentElement.id).style.zIndex = counter;
     }
+    if (event.target.parentElement.children[0].checked == false){
+      event.target.parentElement.parentElement.classList.add('print-active');
+    }
+    if (event.target.parentElement.children[0].checked == true){
+      event.target.parentElement.parentElement.classList.remove('print-active');
+    }
   }
 
   return (
     <div className="wrapper" id={`wrapper${i}-${j}`} key={`wrapper${i}`} onMouseDown={placeAbove}>
+      <label class="checkbox-container">
+        <input id="checkbox" type="checkbox"/>
+        <span class="checkmark"></span>
+      </label>
       <p>{answer.prompt.data?.attributes.prompt}</p>
       <h2>{answer.Answer_Text}</h2>
       {answer.Answer_Image.data && 

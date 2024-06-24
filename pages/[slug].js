@@ -131,7 +131,7 @@ const Page = ({ page, items, homepage}) => {
         </form>
         {loading && "Loading..."}
       </div>
-     
+      <div className="print-button" onClick={print}>Print</div>
     </Layout>
   )
 }

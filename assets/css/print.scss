@@ -3,13 +3,18 @@
   $secondary: rgb(18,18,18);
 
   body{
-    --dot-size: 4px;
-    --dot-space: 30px;
-    background:
-		linear-gradient(90deg, white calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-		linear-gradient(white calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
-		black;
-    color: black
+    background: white;
+    color: black;
+    width: 100vw;
+    height: auto;
+  }
+  #content{
+    width: 100vw;
+    height: auto;
+    position: relative;
+  }
+  h1{
+    display: none;
   }
   .wrapper{
     background: white;
@@ -17,6 +22,18 @@
     border-color: black;
     -webkit-box-shadow: 8px 8px 2px -5px black;
     box-shadow: 8px 8px 2px -5px black;
+    display: none;
+    margin-left: 2.5%!important;
+    margin-top: 24px!important;
+    position: relative!important;
+    width: 95%;
+    height: fit-content;
+    left: 0!important;
+    top: 0!important;
+    break-inside: avoid;
+    &.print-active{
+      display: block;
+    }
   }
   .zoom-in-out, .back, .print-button, .menu-icon{
     display: none;
@@ -24,9 +41,16 @@
   .halftone{
     &:after{
       filter: grayscale(1);
+      transform: rotate(0deg);
     }
   }
   .answer-link{
     color: black;
+  }
+  .checkbox-container{
+    display: none;
+  }
+  .button{
+    display: none;
   }
 }
