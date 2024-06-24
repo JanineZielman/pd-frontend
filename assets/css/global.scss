@@ -38,24 +38,38 @@ body{
   right: 14px;
   top: 14px;
   z-index: 99999;
+  background-color: var(--secondary);
+  border: 1px solid var(--primary);
+  padding: 3px 20px;
+  box-shadow: 8px 8px 2px -5px var(--primary);
+  height: 46px;
+  &.change{
+    box-shadow: none;
+    border-color: transparent;
+    background-color: transparent;
+  }
 }
 
-.bar1, .bar2, .bar3 {
-  width: 35px;
-  height: 4px;
+.bar1, .bar2 {
+  width: 4px;
+  height: 15px;
   background-color: var(--primary);
   margin: 6px 0;
   transition: 0.4s;
 }
 
-.change .bar1 {
-  transform: translate(0, 10px) rotate(-45deg);
+.bar1{
+  height: 4px;
 }
 
-.change .bar2 {opacity: 0;}
+.change .bar1 {
+  height: 30px;
+  transform: translate(-5px, 0px) rotate(-45deg);
+}
 
-.change .bar3 {
-  transform: translate(0, -11px) rotate(45deg);
+.change .bar2 {
+  height: 30px;
+  transform: translate(-5px, -35px) rotate(45deg);
 }
 
 .menu{
@@ -351,7 +365,8 @@ input[type="file"]{
   right: 14px;
   font-size: 40px;
   background-color: var(--secondary);
-  padding: 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--primary);
   box-shadow: 8px 8px 2px -5px var(--primary);
   div{
     cursor: pointer;
@@ -377,4 +392,12 @@ input[type="file"]{
   font-size: 32px;
   line-height: 1;
   cursor: pointer;
+}
+
+.request{
+  display: block;
+  margin-right: 2%;
+  text-align: right;
+  margin-top: 10px;
+  color: var(--primary);
 }

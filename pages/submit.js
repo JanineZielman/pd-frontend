@@ -88,6 +88,7 @@ const Page = ({ homepage}) => {
          <label>
           *{homepage.attributes.Question}
           <input id="password" type="password" name="password"  />
+          <a className="request" href="mailto:productdesign.arnhem@artez.nl?subject=Password Request PDAPedia">Request PW</a>
         </label>
         <br /><br />
         <div className="error">{error}</div>

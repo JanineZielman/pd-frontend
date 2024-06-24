@@ -3,7 +3,7 @@ import Layout from "../components/layout/layout"
 import React, { useEffect, useState, useRef } from "react"
 import Item from "../components/item"
 
-const Page = ({ page, items}) => {
+const Page = ({ page, items, homepage}) => {
   let imageId;
 
   useEffect(() => {
@@ -95,7 +95,7 @@ const Page = ({ page, items}) => {
   }
 
   return (
-    <Layout>
+    <Layout homepage={homepage}>
       <a className="back" href="/">Back to home</a>
       <div className="content2">
           {page.attributes.Answer?.map((item, i) => {
@@ -142,12 +142,15 @@ export async function getServerSideProps({ params }) {
     await fetchAPI( `/items?filters[slug][$eq]=${params.slug}&populate[Answer][populate]=*&populate=*`
   );
 
+  const homepageRes = await fetchAPI("/homepage?populate=*");
+
   const promptsRes = await fetchAPI("/prompts?populate=*");
 
   return {
     props: { 
       page: pagesRes.data[0], 
-      items: promptsRes.data
+      items: promptsRes.data,
+      homepage: homepageRes.data
     },
   };
 }
