@@ -50,8 +50,12 @@ h1{
 
 h2{
   margin: 5px 0;
-  font-size: 52px;
+  font-size: 50px;
   line-height: 1;
+}
+
+p{
+  font-size: 16px;
 }
 
 .wrapper{
@@ -60,6 +64,7 @@ h2{
   background-color: $secondary;
   width: 400px;
   max-width: 100%;
+  min-width: 100px;
   height: fit-content;
   position: absolute;
   padding: 14px 24px;
@@ -67,11 +72,16 @@ h2{
   box-shadow: 8px 8px 2px -5px $primary;
   cursor: move;
   z-index: 999;
+  transition: width 0.4s ease;
   img{
     width: 100%;
     height: auto;
     // z-index: 9999;
     filter: grayscale(1);
+    transition: all 0.4s ease;
+  }
+  *{
+    transition: all 0.4s ease;
   }
 }
 
@@ -278,12 +288,14 @@ input[type="file"]{
   z-index: 999;
   text-decoration: none;
   color: $primary;
+  font-size: 28px;
 }
 
 .zoom-in-out{
   position: fixed;
   z-index: 9999;
-  top: 14px;
+  top: 50%;
+  transform: translateY(-50%);
   right: 14px;
   font-size: 40px;
   background-color: $secondary;
@@ -300,7 +312,7 @@ input[type="file"]{
 .answer-link{
   text-decoration: none;
   color: $primary;
-  font-size: 28px;
+  font-size: 25px;
   &:hover{
     opacity: 0.8;
   }

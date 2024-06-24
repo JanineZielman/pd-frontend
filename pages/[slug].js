@@ -14,7 +14,6 @@ const Page = ({ page, items}) => {
         for (let i = 0; i < document.getElementsByClassName('wrapper').length; i++) {
           let randomX =  Math.floor(Math.random() * 85) + 'vw';
           let randomY =  Math.floor(Math.random() * 85) + 'vh';
-          let randomW =  Math.floor(Math.random() * 50 + 50  ) + '%';
           let id = '#' + document.getElementsByClassName('wrapper')[i].id
           $(id).draggable();
           document.getElementsByClassName('wrapper')[i].style.marginLeft = randomX
@@ -22,18 +21,6 @@ const Page = ({ page, items}) => {
         }
       } );   
   }, [])
-
-  function placeAbove(event){
-    if (event.target.parentElement.id){
-      counter++
-      document.getElementById(event.target.parentElement.id).style.zIndex = counter;
-    }
-    if (event.target.id){
-      counter++
-      document.getElementById(event.target.id).style.zIndex = counter;
-    }
-  }
-
   const [error, setError] = useState()
   const [randomNumber, setRandomNumber] = useState(getRandomInt(items.length))
 

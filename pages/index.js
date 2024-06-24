@@ -11,7 +11,6 @@ const Home = ({ homepage, items }) => {
         for (let i = 0; i < document.getElementsByClassName('wrapper').length; i++) {
           let randomX =  Math.floor(Math.random() * 150) + 'vw';
           let randomY =  Math.floor(Math.random() * 150) + 'vh';
-          let randomW =  Math.floor(Math.random() * 50 + 50  ) + '%';
           let id = '#' + document.getElementsByClassName('wrapper')[i].id
           $(id).draggable();
           document.getElementsByClassName('wrapper')[i].style.marginLeft = randomX
@@ -21,24 +20,55 @@ const Home = ({ homepage, items }) => {
       
   }, [])
 
+  let width = 400;
+  let h2Size = 50;
+  let pSize = 16;
+  let aSize = 25;
 
   function zoomIn(){
-    var Page = document.getElementById('content');
-    var zoom = parseInt(Page.style.zoom ? Page.style.zoom : 100) + 5 +'%'
-    Page.style.zoom = zoom;
-    return false;
+    width = width + 50;
+    h2Size = h2Size + 6.25
+    pSize = pSize + 0.64
+    aSize = aSize + 1.5625;
+    let items = document.getElementsByClassName('wrapper')
+    for (let i = 0; i < items.length; i++) {
+      items[i].style.width = width + 'px'
+      if (items[i].getElementsByTagName('h2')[0]){
+        items[i].getElementsByTagName('h2')[0].style.fontSize = h2Size + 'px'
+      }
+      if (items[i].getElementsByTagName('p')[0]){
+        items[i].getElementsByTagName('p')[0].style.fontSize = pSize + 'px'
+      }
+      if (items[i].getElementsByTagName('a')[0]){
+        items[i].getElementsByTagName('a')[0].style.fontSize = aSize + 'px'
+      }
+    }
   }
 
   function zoomOut(){
-    var Page = document.getElementById('content');
-    var zoom = parseInt(Page.style.zoom ? Page.style.zoom : 100) - 5 +'%'
-    Page.style.zoom = zoom;
-    return false;
+    width = width - 50;
+    h2Size = h2Size - 6.25
+    pSize = pSize - 0.64
+    aSize = aSize - 1.5625;
+    let items = document.getElementsByClassName('wrapper')
+    for (let i = 0; i < items.length; i++) {
+      items[i].style.width = width + 'px'
+      if (items[i].getElementsByTagName('h2')[0]){
+        items[i].getElementsByTagName('h2')[0].style.fontSize = h2Size + 'px'
+      }
+      if (items[i].getElementsByTagName('p')[0]){
+        items[i].getElementsByTagName('p')[0].style.fontSize = pSize + 'px'
+      }
+      if (items[i].getElementsByTagName('a')[0]){
+        items[i].getElementsByTagName('a')[0].style.fontSize = aSize + 'px'
+      }
+    }
   }
 
 
   return (
     <Layout>
+      <a className="back" href="/submit">Submit</a>
       <div className="zoom-in-out">
         <div onClick={zoomIn}>+</div>
         <div onClick={zoomOut}>-</div>
@@ -52,7 +82,6 @@ const Home = ({ homepage, items }) => {
                   <Item answer={answer} i={i} j={j}/>
                 )
               })}
-              
               </>
             )
           })}
