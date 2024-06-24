@@ -17,10 +17,9 @@ const Layout = ({ children, homepage }) => {
 
   return(
     <div>
-      <div class="menu-icon" id="menu-icon" onClick={toggleMenu}>
-        <div class="bar1"></div>
-        <div class="bar2"></div>
-        <div class="bar3"></div>
+      <div className="menu-icon" id="menu-icon" onClick={toggleMenu}>
+        <div className="bar1"></div>
+        <div className="bar2"></div>
       </div>
       {children}
       <div className="menu" id="menu">

@@ -28,9 +28,9 @@ const Item = ({ answer, i, j}) => {
 
   return (
     <div className="wrapper" id={`wrapper${i}-${j}`} key={`wrapper${i}`} onMouseDown={placeAbove}>
-      <label class="checkbox-container">
+      <label className="checkbox-container">
         <input id="checkbox" type="checkbox"/>
-        <span class="checkmark"></span>
+        <span className="checkmark"></span>
       </label>
       <p>{answer.prompt.data?.attributes.prompt}</p>
       <h2>{answer.Answer_Text}</h2>

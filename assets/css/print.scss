@@ -6,10 +6,14 @@
     background: white;
     color: black;
     width: 100vw;
+    min-width: 100%;
+    max-width: 100%;
     height: auto;
   }
   #content{
     width: 100vw;
+    min-width: 100%;
+    max-width: 100%;
     height: auto;
     position: relative;
   }
