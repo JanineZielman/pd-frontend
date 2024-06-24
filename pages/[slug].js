@@ -8,13 +8,13 @@ const Page = ({ page, items, homepage}) => {
 
   useEffect(() => {
       $( function() {
-        for (let i = 0; i < document.getElementsByClassName('wrapper').length; i++) {
+        for (let i = 0; i < document.getElementsByClassName('wrapper2').length; i++) {
           let randomX =  Math.floor(Math.random() * 85) + 'vw';
           let randomY =  Math.floor(Math.random() * 85) + 'vh';
-          let id = '#' + document.getElementsByClassName('wrapper')[i].id
+          let id = '#' + document.getElementsByClassName('wrapper2')[i].id
           $(id).draggable();
-          document.getElementsByClassName('wrapper')[i].style.marginLeft = randomX
-          document.getElementsByClassName('wrapper')[i].style.marginTop = randomY
+          document.getElementsByClassName('wrapper2')[i].style.marginLeft = randomX
+          document.getElementsByClassName('wrapper2')[i].style.marginTop = randomY
         }
       } );   
   }, [])
@@ -94,13 +94,60 @@ const Page = ({ page, items, homepage}) => {
     document.getElementById('popup').style.display = 'none';
   }
 
+  function print(){
+    window.print();
+  }
+
+
+  function openPopup2(id){
+    document.getElementById('popup2').style.display = 'flex';
+    document.getElementById('yes-button').onclick = function() {
+      removeItem(id)
+    }
+  }
+
+  function closePopup2(){
+    document.getElementById('popup2').style.display = 'none';
+  }
+
+  function removeItem(id){
+    console.log(userData.Answer.filter(item => item.id !== id))
+
+    let newData = {
+      Answer: userData.Answer.filter(item => item.id !== id)
+    }
+
+    try {
+      fetch(`https://cms.pdapedia.nl/api/items/${page.id}?populate=*`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          data: newData,
+        }),
+      })
+      .then(response => response.json())
+      .then(setLoading(false))
+      .then(location.reload());
+    } catch (err) {
+      console.log('err', err);
+      setError(err.response.data.message);
+      setLoading(false);
+    } 
+  }
+
+
   return (
     <Layout homepage={homepage}>
       <a className="back" href="/">Back to home</a>
       <div className="content2">
           {page.attributes.Answer?.map((item, i) => {
             return(
-              <Item answer={item} i={i} j={'0'}/>
+              <div className="wrapper2" id={`wrapper${i}-0`}>
+                <div className="delete-button" onClick={() => openPopup2(item.id)}>X</div>
+                <Item answer={item} i={i} j={'0'}/>
+              </div>
             )
           })}
         </div>
@@ -132,6 +179,15 @@ const Page = ({ page, items, homepage}) => {
         {loading && "Loading..."}
       </div>
       <div className="print-button" onClick={print}>Print</div>
+      <div className="popup" id="popup2">
+          <form>
+            <h2>Are you sure you want to delete this item?</h2><br/>
+            <div className="flex">
+              <button className="button" id={`yes-button`}>Yes</button>
+              <button className="button" onClick={closePopup2}>No</button>
+          </div>
+          </form>
+      </div>
     </Layout>
   )
 }

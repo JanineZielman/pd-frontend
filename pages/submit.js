@@ -25,7 +25,6 @@ const Page = ({ homepage}) => {
     userData.slug = document.getElementById('fullname').value.replaceAll(' ', '-') + document.getElementById('year').value.replaceAll(' ', '-') + document.getElementById('location').value.replaceAll(' ', '-') 
     setLoading(true)
     
-    console.log( userData.slug.length)
     if (document.getElementById('password').value == homepage.attributes.Answer1 || document.getElementById('password').value == homepage.attributes.Answer2 ){
       try {
         fetch('https://cms.pdapedia.nl/api/items?populate=*', {

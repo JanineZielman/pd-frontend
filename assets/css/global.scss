@@ -266,11 +266,12 @@ input[type="file"]{
 
 .flex{
   display: flex;
-  justify-content: space-between;
+  justify-content: space-evenly;
 }
 
 .button{
   background-color: transparent;
+  color: var(--primary);
   border: 1px solid var(--primary);
   padding: 5px 20px;
   font-size: 24px;
@@ -281,8 +282,6 @@ input[type="file"]{
     background-color: var(--primary);
     color: var(--secondary);
     border-color: var(--secondary);
-    padding-bottom: 0px;
-    padding-top: 6px;
   }
 }
 
@@ -325,6 +324,10 @@ input[type="file"]{
       color: var(--secondary);
     }
   }
+}
+
+#popup2{
+  display: none;
 }
 
 .close{
@@ -457,3 +460,6 @@ input[type="file"]{
 }
 
 
+.delete-button{
+  cursor: pointer;
+}
