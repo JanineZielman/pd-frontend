@@ -25,7 +25,7 @@ const Page = ({ homepage, items }) => {
     setLoading(true)
     
     console.log( userData.slug.length)
-    if (document.getElementById('password').value == 'sigaret'){
+    if (document.getElementById('password').value == 'tile' || document.getElementById('password').value == 'tegeltje' || document.getElementById('password').value == 'plaster title'){
       try {
         fetch('https://cms.pdapedia.nl/api/items?populate=*', {
           method: 'POST',
@@ -79,12 +79,12 @@ const Page = ({ homepage, items }) => {
         </label>
         <br />
         <label>
-          Would you like to leave us your contact information?:
+          E-mail adres (optional):
           <input type="text" name="Email" onChange={e => handleChange(e)} />
         </label>
          <br />
          <label>
-          Magic password:
+          *What was the first assignment in ceramics?:
           <input id="password" type="password" name="password"  />
         </label>
         <br /><br />
