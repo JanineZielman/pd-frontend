@@ -14,8 +14,10 @@
     width: 100vw;
     min-width: 100%;
     max-width: 100%;
+    margin-left: 0;
     height: auto;
     position: relative;
+    padding-left: 14px;
   }
   h1{
     display: none;
@@ -27,10 +29,10 @@
     -webkit-box-shadow: 8px 8px 2px -5px black;
     box-shadow: 8px 8px 2px -5px black;
     display: none;
-    margin-left: 2.5%!important;
+    margin-left: 0%!important;
     margin-top: 24px!important;
     position: relative!important;
-    width: 95%;
+    width: 100%;
     height: fit-content;
     left: 0!important;
     top: 0!important;
