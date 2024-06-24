@@ -28,8 +28,8 @@ const Home = ({ homepage, items }) => {
   function zoomIn(){
     width = width + 50;
     h2Size = h2Size + 6.25
-    pSize = pSize + 0.64
-    aSize = aSize + 1.5625;
+    pSize = pSize + 2
+    aSize = aSize + 3.125;
     let items = document.getElementsByClassName('wrapper')
     for (let i = 0; i < items.length; i++) {
       items[i].style.width = width + 'px'
@@ -48,8 +48,8 @@ const Home = ({ homepage, items }) => {
   function zoomOut(){
     width = width - 50;
     h2Size = h2Size - 6.25
-    pSize = pSize - 0.64
-    aSize = aSize - 1.5625;
+    pSize = pSize - 2
+    aSize = aSize - 3.125;
     let items = document.getElementsByClassName('wrapper')
     for (let i = 0; i < items.length; i++) {
       items[i].style.width = width + 'px'
