@@ -1,7 +1,7 @@
 import { fetchAPI } from "../lib/api"
 import Layout from "../components/layout/layout"
 import React, { useEffect, useState, useRef } from "react"
-import Image from "../components/image"
+import Item from "../components/item"
 
 const Page = ({ page, items}) => {
   console.log(page.attributes.Answer)
@@ -19,7 +19,6 @@ const Page = ({ page, items}) => {
           $(id).draggable();
           document.getElementsByClassName('wrapper')[i].style.marginLeft = randomX
           document.getElementsByClassName('wrapper')[i].style.marginTop = randomY
-          document.getElementsByClassName('wrapper')[i].style.transform = 'scale(' + randomW + ')';
         }
       } );   
   }, [])
@@ -117,15 +116,7 @@ const Page = ({ page, items}) => {
       <div className="content2">
           {page.attributes.Answer?.map((item, i) => {
             return(
-              <div className="wrapper" id={`wrapper${i}`} key={`wrapper${i}`} onMouseDown={placeAbove}>
-                <p>{item.prompt.data.attributes.prompt}</p>
-                <h2>{item.Answer_Text}</h2>
-                {item.Answer_Image?.data && 
-                  <div className="halftone">
-                    <Image image={item.Answer_Image.data}/>
-                  </div>
-                }
-              </div>
+              <Item answer={item} i={i} j={'0'}/>
             )
           })}
         </div>

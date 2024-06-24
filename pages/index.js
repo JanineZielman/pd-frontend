@@ -2,9 +2,9 @@ import React, { useEffect, useState } from "react"
 import Layout from "../components/layout/layout"
 import { fetchAPI } from "../lib/api"
 import Image from "../components/image"
+import Item from "../components/item"
 
 const Home = ({ homepage, items }) => {
-  let counter = 1;
 
   useEffect(() => {
       $( function() {
@@ -16,23 +16,11 @@ const Home = ({ homepage, items }) => {
           $(id).draggable();
           document.getElementsByClassName('wrapper')[i].style.marginLeft = randomX
           document.getElementsByClassName('wrapper')[i].style.marginTop = randomY
-          document.getElementsByClassName('wrapper')[i].style.transform = 'scale(' + randomW + ')';
         }
-        
       } );
       
   }, [])
 
-  function placeAbove(event){
-    if (event.target.parentElement.id){
-      counter++
-      document.getElementById(event.target.parentElement.id).style.zIndex = counter;
-    }
-    if (event.target.id){
-      counter++
-      document.getElementById(event.target.id).style.zIndex = counter;
-    }
-  }
 
   function zoomIn(){
     var Page = document.getElementById('content');
@@ -61,18 +49,7 @@ const Home = ({ homepage, items }) => {
               <>
               {item.attributes.Answer.map((answer,j) => {
                 return(
-                  <div className="wrapper" id={`wrapper${i}-${j}`} key={`wrapper${i}`} onMouseDown={placeAbove}>
-                    <p>{answer.prompt.data?.attributes.prompt}</p>
-                    <h2>{answer.Answer_Text}</h2>
-                    {answer.Answer_Image.data && 
-                      <div className="halftone">
-                        <Image image={answer.Answer_Image.data}/>
-                      </div>
-                    }
-                    {answer.Answer_Link && 
-                      <a className="answer-link" href={answer.Answer_Link}>➝ {answer.Answer_Link}</a>
-                    }
-                  </div>
+                  <Item answer={answer} i={i} j={j}/>
                 )
               })}
               
@@ -80,7 +57,7 @@ const Home = ({ homepage, items }) => {
             )
           })}
         </div>
-        <h1>Product Design <br/> 50 jaar</h1>
+        <h1>Product Design <br/> 50 Years</h1>
 
     </Layout>
   )
