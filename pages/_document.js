@@ -8,6 +8,7 @@ class MyDocument extends Document {
           <script src="https://code.jquery.com/jquery-3.7.1.js"></script>
           <script src="https://code.jquery.com/ui/1.13.3/jquery-ui.js"></script>
           <script src="/jquery.ui.touch-punch.min.js"></script>
+          <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
         </Head>
         <body>
           <Main />

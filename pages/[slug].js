@@ -4,9 +4,6 @@ import React, { useEffect, useState, useRef } from "react"
 import Item from "../components/item"
 
 const Page = ({ page, items}) => {
-  console.log(page.attributes.Answer)
-
-  let counter = 1;
   let imageId;
 
   useEffect(() => {

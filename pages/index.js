@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react"
 import Layout from "../components/layout/layout"
 import { fetchAPI } from "../lib/api"
-import Image from "../components/image"
 import Item from "../components/item"
 
 const Home = ({ homepage, items }) => {
-
+  console.log(homepage)
   useEffect(() => {
       $( function() {
         for (let i = 0; i < document.getElementsByClassName('wrapper').length; i++) {
@@ -65,29 +64,33 @@ const Home = ({ homepage, items }) => {
     }
   }
 
+  function print(){
+    window.print();
+  }
+
 
   return (
-    <Layout>
+    <Layout homepage={homepage}>
       <a className="back" href="/submit">Submit</a>
       <div className="zoom-in-out">
         <div onClick={zoomIn}>+</div>
         <div onClick={zoomOut}>-</div>
       </div>
-        <div className="content" id="content">
-          {items.map((item, i) => {
-            return(
-              <>
-              {item.attributes.Answer.map((answer,j) => {
-                return(
-                  <Item answer={answer} i={i} j={j}/>
-                )
-              })}
-              </>
-            )
-          })}
-        </div>
-        <h1>Product Design <br/> 50 Years</h1>
-
+      <div className="content" id="content">
+        {items.map((item, i) => {
+          return(
+            <>
+            {item.attributes.Answer.map((answer,j) => {
+              return(
+                <Item answer={answer} i={i} j={j}/>
+              )
+            })}
+            </>
+          )
+        })}
+      </div>
+      <h1>Product Design <br/> 50 Years</h1>
+      <div className="print-button" onClick={print}>Print</div>
     </Layout>
   )
 }

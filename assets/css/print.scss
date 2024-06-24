@@ -1,0 +1,32 @@
+@media print{
+  $primary: rgb(172, 140, 65);
+  $secondary: rgb(18,18,18);
+
+  body{
+    --dot-size: 4px;
+    --dot-space: 30px;
+    background:
+		linear-gradient(90deg, white calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		linear-gradient(white calc(var(--dot-space) - var(--dot-size)), transparent 1%) center / var(--dot-space) var(--dot-space),
+		black;
+    color: black
+  }
+  .wrapper{
+    background: white;
+    color: black;
+    border-color: black;
+    -webkit-box-shadow: 8px 8px 2px -5px black;
+    box-shadow: 8px 8px 2px -5px black;
+  }
+  .zoom-in-out, .back, .print-button, .menu-icon{
+    display: none;
+  }
+  .halftone{
+    &:after{
+      filter: grayscale(1);
+    }
+  }
+  .answer-link{
+    color: black;
+  }
+}
