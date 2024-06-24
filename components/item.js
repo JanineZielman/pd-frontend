@@ -13,6 +13,10 @@ const Item = ({ answer, i, j}) => {
       counter++
       document.getElementById(event.target.id).style.zIndex = counter;
     }
+    if (event.target.parentElement.parentElement.parentElement.id){
+      counter++
+      document.getElementById(event.target.parentElement.parentElement.parentElement.id).style.zIndex = counter;
+    }
   }
 
   return (

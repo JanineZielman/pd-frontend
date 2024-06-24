@@ -4,7 +4,7 @@ import { fetchAPI } from "../lib/api"
 import Item from "../components/item"
 
 const Home = ({ homepage, items }) => {
-  console.log(homepage)
+
   useEffect(() => {
       $( function() {
         for (let i = 0; i < document.getElementsByClassName('wrapper').length; i++) {

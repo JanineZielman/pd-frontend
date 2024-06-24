@@ -3,7 +3,8 @@ import Layout from "../components/layout/layout"
 import { fetchAPI } from "../lib/api"
 import { useRouter } from "next/router"
 
-const Page = ({ homepage, items }) => {
+const Page = ({ homepage}) => {
+
   const router = useRouter();
 
   const [error, setError] = useState()
@@ -25,7 +26,7 @@ const Page = ({ homepage, items }) => {
     setLoading(true)
     
     console.log( userData.slug.length)
-    if (document.getElementById('password').value == 'tile' || document.getElementById('password').value == 'tegeltje' || document.getElementById('password').value == 'plaster title'){
+    if (document.getElementById('password').value == homepage.attributes.Answer1 || document.getElementById('password').value == homepage.attributes.Answer2 ){
       try {
         fetch('https://cms.pdapedia.nl/api/items?populate=*', {
           method: 'POST',
@@ -60,7 +61,8 @@ const Page = ({ homepage, items }) => {
 
 
   return (
-
+  <Layout homepage={homepage}>
+    <a className="back" href="/">Back to home</a>
     <div className="submit-page center-page" ref={submitPage}>
       <form onSubmit={handleSubmit}>
         <label>
@@ -84,7 +86,7 @@ const Page = ({ homepage, items }) => {
         </label>
          <br />
          <label>
-          *What was the first assignment in ceramics?:
+          *{homepage.attributes.Question}
           <input id="password" type="password" name="password"  />
         </label>
         <br /><br />
@@ -95,20 +97,18 @@ const Page = ({ homepage, items }) => {
       </form>
       {loading && "Loading..."}
     </div>
-
+  </Layout>
   )
 }
 
 export async function getServerSideProps(ctx) {
-  const [homepageRes, itemsRes] = await Promise.all([
+  const [homepageRes] = await Promise.all([
     fetchAPI("/homepage?populate=*"),
-    fetchAPI("/prompts?populate=*"),
   ])
 
   return {
     props: {
       homepage: homepageRes.data,
-      items: itemsRes.data
     },
   }
 }
