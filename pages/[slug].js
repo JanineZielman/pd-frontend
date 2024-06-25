@@ -58,7 +58,9 @@ const Page = ({ page, items, homepage}) => {
         .then(response => response.json())
         .then(setLoading(false))
         .then(imageId=null)
-        .then(location.reload());
+        setTimeout(() => {
+          location.reload();
+        }, 500);
       } catch (err) {
         console.log('err', err);
         setError(err.response.data.message);

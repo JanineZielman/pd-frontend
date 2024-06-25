@@ -1,3 +1,7 @@
+@page{
+  margin: 3mm;
+}
+
 @media print{
   $primary: rgb(172, 140, 65);
   $secondary: rgb(18,18,18);
@@ -9,6 +13,7 @@
     min-width: 100%;
     max-width: 100%;
     height: auto;
+    position: relative;
   }
   #content{
     width: 100vw;
@@ -32,7 +37,7 @@
     margin-left: 0%!important;
     margin-top: 24px!important;
     position: relative!important;
-    width: 100%;
+    width: 100%!important;
     height: fit-content;
     left: 0!important;
     top: 0!important;
@@ -44,9 +49,16 @@
   .zoom-in-out, .back, .print-button, .menu-icon{
     display: none;
   }
+
+  img{
+    display: block;
+  }
+  
   .halftone{
+    filter: contrast(250%);
+    display: block;
     &:after{
-      filter: grayscale(1);
+      filter: grayscale(1) invert(1);
       transform: rotate(0deg);
     }
   }

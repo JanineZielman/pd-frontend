@@ -73,15 +73,17 @@ body{
 }
 
 .menu{
-  width: 350px;
+  min-width: 350px;
+  width: 40vw;
+  max-width: 500px;
   position: fixed;
   top: 0;
-  right: -400px;
+  right: -500px;
   background-color: var(--secondary);
   height: 100vh;
   overflow-y: auto;
   z-index: 9999;
-  padding: 14px;
+  padding: 14px 24px;
   transition: all 0.4s ease;
   &.active{
     right: 0;
@@ -169,7 +171,6 @@ p{
   left: -100%;
   right: -100%;
   bottom: -100%;
-  background-blend-mode: multiply;
   background:
       radial-gradient(3px 3px, var(--primary), var(--secondary));
   background-size: 3px 3px;

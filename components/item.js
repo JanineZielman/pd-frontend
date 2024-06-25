@@ -34,7 +34,7 @@ const Item = ({ answer, i, j}) => {
       </label>
       <p>{answer.prompt.data?.attributes.prompt}</p>
       <h2>{answer.Answer_Text}</h2>
-      {answer.Answer_Image.data && 
+      {answer?.Answer_Image?.data && 
         <div className="halftone">
           <Image image={answer.Answer_Image.data}/>
         </div>
