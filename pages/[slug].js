@@ -29,21 +29,18 @@ const Page = ({ page, items, homepage}) => {
   const [loading, setLoading] = useState(null);
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setLoading(true)
     let text = document.getElementById('text').value
     let link = document.getElementById('link').value
     let prompt_id = document.getElementById('hidden').value
 
-    if (document.getElementById('answer_image').files[0]){
-      handleUpload();
-    }
    
     setTimeout(() => {
       if (document.getElementById('answer_image').files[0]){
         userData.Answer.push({Answer_Text: text,  Answer_Link: link, prompt: prompt_id, Answer_Image: [imageId] })
       } else {
-        userData.Answer.push({Answer_Text: text,  Answer_Link: link, prompt: prompt_id })
+        userData.Answer.push({Answer_Text: text,  Answer_Link: link, prompt: prompt_id, Answer_Image: [] })
       }
       try {
         fetch(`https://cms.pdapedia.nl/api/items/${page.id}?populate=*`, {
@@ -72,16 +69,24 @@ const Page = ({ page, items, homepage}) => {
   }
 
   const handleUpload = async (e) => {
-    let image = document.getElementById('answer_image').files[0]
-    const formData = new FormData();
-    formData.append('files', image);
-    fetch(`https://cms.pdapedia.nl/api/upload`, {
-      method: 'POST',
-      body: formData
-    })
-    .then(response => response.json())
-    .then(data => imageId = data?.[0]?.id)
-    .catch(error => console.error('Error:', error));
+    e.preventDefault();
+    setLoading(true)
+    if (document.getElementById('answer_image').files[0]){
+      let image = document.getElementById('answer_image').files[0]
+      console.log(image)
+      const formData = new FormData();
+      formData.append('files', image);
+      fetch(`https://cms.pdapedia.nl/api/upload`, {
+        method: 'POST',
+        body: formData
+      })
+      .then(response => response.json())
+      .then(data => imageId = data?.[0]?.id)
+      .then(handleSubmit())
+      .catch(error => console.error('Error:', error));
+    } else {
+      handleSubmit()
+    }
   }
 
   function getRandomInt(max) {
@@ -113,7 +118,6 @@ const Page = ({ page, items, homepage}) => {
   }
 
   function removeItem(id){
-    console.log(userData.Answer.filter(item => item.id !== id))
 
     let newData = {
       Answer: userData.Answer.filter(item => item.id !== id)
@@ -157,7 +161,7 @@ const Page = ({ page, items, homepage}) => {
       <div className="button open-popup" onClick={openPopup}>Answer prompt</div>
 
       <div id="popup" className="submit-page popup" ref={submitPage}>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleUpload}>
           <div className="close" onClick={closePopup}>X</div>
           <label>
             <input id="hidden" type="number" value={items[randomNumber].id}/>

@@ -71,7 +71,7 @@ const Home = ({ homepage, items }) => {
 
   return (
     <Layout homepage={homepage}>
-      <a className="back" href="/submit">Submit</a>
+      <a className="back" href="/submit" target="_blank">Submit</a>
       <div className="zoom-in-out">
         <div onClick={zoomIn}>+</div>
         <div onClick={zoomOut}>-</div>
