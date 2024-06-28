@@ -135,7 +135,9 @@ p{
   border: 1px solid var(--primary);
   color: var(--primary);
   background-color: var(--secondary);
-  width: 500px;
+  width: 450px;
+  max-height: 90vh;
+  overflow-y: auto;
   &.w-200{
     width: 600px;
     h2{
@@ -192,6 +194,7 @@ p{
   filter: contrast(175%);
   overflow: hidden;
   transform: translateZ(0); /* force a HW accelerated layer */
+  margin-bottom: 24px;
 }
 
 .halftone > * {

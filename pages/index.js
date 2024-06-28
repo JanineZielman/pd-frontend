@@ -8,8 +8,8 @@ const Home = ({ homepage, items }) => {
   useEffect(() => {
       $( function() {
         for (let i = 0; i < document.getElementsByClassName('wrapper').length; i++) {
-          let randomX =  Math.floor(Math.random() * 2500) + 'px';
-          let randomY =  Math.floor(Math.random() * 2500) + 'px';
+          let randomX =  Math.floor(Math.random() * 4000) + 'px';
+          let randomY =  Math.floor(Math.random() * 4000) + 'px';
           let id = '#' + document.getElementsByClassName('wrapper')[i].id
           $(id).draggable();
           document.getElementsByClassName('wrapper')[i].style.marginLeft = randomX
