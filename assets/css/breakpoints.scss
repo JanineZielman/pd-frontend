@@ -3,4 +3,15 @@
     font-size: 48px;
     width: 100%;
   }
+  h2{
+    font-size: 30px;
+  }
+  .wrapper.w-400 h2{
+    font-size: 20px;
+    line-height: 1.1;
+  }
+
+  .wrapper{
+    max-width: 95vw;
+  }
 }

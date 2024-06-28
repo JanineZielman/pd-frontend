@@ -27,7 +27,7 @@ const Item = ({ answer, i, j}) => {
   }
 
   return (
-    <div className="wrapper" id={`wrapper${i}-${j}`} key={`wrapper${i}`} onMouseDown={placeAbove}>
+    <div className={`wrapper w-${Math.round(answer.Answer_Text?.length/100)*100}`} id={`wrapper${i}-${j}`} key={`wrapper${i}`} onMouseDown={placeAbove}>
       <label className="checkbox-container">
         <input id="checkbox" type="checkbox"/>
         <span className="checkmark"></span>
@@ -40,7 +40,7 @@ const Item = ({ answer, i, j}) => {
         </div>
       }
       {answer.Answer_Link && 
-        <a className="answer-link" href={answer.Answer_Link} target="_blank">➝ {answer.Answer_Link}</a>
+        <a className="answer-link" href={answer.Answer_Link} target="_blank">➝ Link <span className="hide">{answer.Answer_Link}</span></a>
       }
     </div>
   )

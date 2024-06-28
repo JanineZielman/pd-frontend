@@ -116,6 +116,10 @@ h1{
   z-index: -1;
 }
 
+a{
+  word-wrap: break-word;
+}
+
 
 h2{
   margin: 5px 0;
@@ -131,7 +135,37 @@ p{
   border: 1px solid var(--primary);
   color: var(--primary);
   background-color: var(--secondary);
-  width: 400px;
+  width: 500px;
+  &.w-200{
+    width: 600px;
+    h2{
+      font-size: 40px;
+    }
+  }
+  &.w-300{
+    width: 700px;
+    h2{
+      font-size: 40px;
+    }
+  }
+  &.w-400{
+    width: 800px;
+    h2{
+      font-size: 40px;
+    }
+  }
+  &.w-500{
+    width: 900px;
+    h2{
+      font-size: 40px;
+    }
+  }
+  &.w-600{
+    width: 1000px;
+    h2{
+      font-size: 40px;
+    }
+  }
   max-width: 100%;
   min-width: 100px;
   height: fit-content;
